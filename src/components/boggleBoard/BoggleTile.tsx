@@ -15,9 +15,8 @@ const BoggleTile = ({ letter, row, col, isHighlighted }: BoggleTileProps) => (
       bg-white rounded-lg shadow-md
       text-2xl font-bold text-gray-800
       transition-all duration-200
-      ${isHighlighted
-        ? 'bg-blue-200 ring-2 ring-blue-400' 
-        : 'hover:bg-gray-100'
+      ${
+        isHighlighted ? "bg-blue-200 ring-2 ring-blue-400" : "hover:bg-gray-100"
       }
     `}
   >

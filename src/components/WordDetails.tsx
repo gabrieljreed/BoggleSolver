@@ -1,7 +1,7 @@
 import type { Word } from "../types";
 
 interface WordDetailsProps {
-    selectedWord: Word | null;
+  selectedWord: Word | null;
 }
 
 const WordDetails = ({ selectedWord }: WordDetailsProps) => {
@@ -13,7 +13,7 @@ const WordDetails = ({ selectedWord }: WordDetailsProps) => {
         Selected: <span className="text-blue-600">{selectedWord.word}</span>
       </h3>
       <p className="text-sm text-gray-600 mt-2">
-        Path: {selectedWord.path.map(p => `(${p.row},${p.col})`).join(' → ')}
+        Path: {selectedWord.path.map((p) => `(${p.row},${p.col})`).join(" → ")}
       </p>
     </div>
   );

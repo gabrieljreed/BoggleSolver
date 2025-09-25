@@ -1,14 +1,14 @@
-import './App.css'
-import BoggleSolver from './components/BoggleSolver'
+import "./App.css";
+import BoggleSolver from "./components/BoggleSolver";
 
 function App() {
   return (
     <>
-    <div>
-      <BoggleSolver />
-    </div>
+      <div>
+        <BoggleSolver />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

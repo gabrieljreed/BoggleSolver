@@ -9,17 +9,22 @@ interface BoggleBoardProps {
   onTilePositionsCalculated?: (positions: TilePositions) => void;
 }
 
-const BoggleBoard = ({ board, selectedWord, onTilePositionsCalculated }: BoggleBoardProps) => {
+const BoggleBoard = ({
+  board,
+  selectedWord,
+  onTilePositionsCalculated,
+}: BoggleBoardProps) => {
   const [tilePositions, setTilePositions] = useState<TilePositions>({});
   const boardRef = useRef<HTMLDivElement>(null);
 
   // Calculate tile positions for drawing lines
   useEffect(() => {
     if (boardRef.current) {
-      const tiles = boardRef.current.querySelectorAll<HTMLDivElement>('[data-tile]');
+      const tiles =
+        boardRef.current.querySelectorAll<HTMLDivElement>("[data-tile]");
       const positions: TilePositions = {};
-      
-      tiles.forEach(tile => {
+
+      tiles.forEach((tile) => {
         const rowStr = tile.dataset.row;
         const colStr = tile.dataset.col;
         if (!rowStr || !colStr) return;
@@ -28,13 +33,13 @@ const BoggleBoard = ({ board, selectedWord, onTilePositionsCalculated }: BoggleB
         const boardRect = boardRef.current!.getBoundingClientRect();
         const row = parseInt(rowStr);
         const col = parseInt(colStr);
-        
+
         positions[`${row}-${col}`] = {
           x: rect.left - boardRect.left + rect.width / 2,
-          y: rect.top - boardRect.top + rect.height / 2
+          y: rect.top - boardRect.top + rect.height / 2,
         };
       });
-      
+
       setTilePositions(positions);
       if (onTilePositionsCalculated) {
         onTilePositionsCalculated(positions);
@@ -43,12 +48,14 @@ const BoggleBoard = ({ board, selectedWord, onTilePositionsCalculated }: BoggleB
   }, [board, onTilePositionsCalculated]);
 
   const isHighlighted = (row: number, col: number): boolean => {
-    return selectedWord ? selectedWord.path.some(p => p.row === row && p.col === col) : false;
+    return selectedWord
+      ? selectedWord.path.some((p) => p.row === row && p.col === col)
+      : false;
   };
 
   return (
     <div className="relative">
-      <div 
+      <div
         ref={boardRef}
         className="grid grid-cols-4 gap-2 p-4 bg-gray-800 rounded-lg"
       >
@@ -65,10 +72,7 @@ const BoggleBoard = ({ board, selectedWord, onTilePositionsCalculated }: BoggleB
         )}
       </div>
 
-      <PathOverlay 
-        selectedWord={selectedWord}
-        tilePositions={tilePositions}
-      />
+      <PathOverlay selectedWord={selectedWord} tilePositions={tilePositions} />
     </div>
   );
 };
