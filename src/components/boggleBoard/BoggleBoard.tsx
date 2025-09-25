@@ -1,4 +1,4 @@
-import type { Board, Word, TilePositions } from "./types";
+import type { Board, Word, TilePositions } from "../../types";
 import { useRef, useEffect, useState } from "react";
 import BoggleTile from "./BoggleTile";
 import PathOverlay from "./PathOverlay";
