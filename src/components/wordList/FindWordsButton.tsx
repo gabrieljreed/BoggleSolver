@@ -1,4 +1,8 @@
-const FindWordsButton = () => (
+interface FindWordsButtonProps {
+  findWords: () => void;
+}
+
+const FindWordsButton = ({ findWords }: FindWordsButtonProps) => (
   <button
     className="
       w-full p-3 mb-3 h-[4rem] rounded-lg 
@@ -8,7 +12,9 @@ const FindWordsButton = () => (
       shadow-md hover:drop-shadow-lg
       hover:scale-101
       border-2 border-transparent
+      cursor-pointer
   "
+    onClick={findWords}
   >
     Find Words
   </button>
