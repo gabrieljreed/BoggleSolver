@@ -10,7 +10,7 @@ const WordItem = ({ wordObj, isSelected, onSelect }: WordItemProps) => (
   <button
     onClick={() => onSelect(wordObj)}
     className={`
-      w-full text-left p-3 rounded-lg transition-all duration-200
+      w-full text-left p-3 rounded-lg transition-all duration-200 cursor-pointer
       ${
         isSelected
           ? "bg-blue-100 border-2 border-blue-400 text-blue-800"
