@@ -98,7 +98,7 @@ const BoggleSolver = () => {
           />
         </div>
 
-        <WordDetails selectedWord={selectedWord} />
+        {/* <WordDetails selectedWord={selectedWord} /> */}
       </div>
     </div>
   );
