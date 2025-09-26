@@ -8,8 +8,12 @@ interface PathOverlayProps {
 const PathOverlay = ({ selectedWord, tilePositions }: PathOverlayProps) => {
   if (!selectedWord) return null;
 
+  // Force re-render of entire SVG when the word changes
+  const animationKey = `${selectedWord.word}-${selectedWord.path.length}`;
+
   return (
     <svg
+      key={animationKey}
       className="absolute inset-0 pointer-events-none"
       style={{ width: "100%", height: "100%" }}
     >
