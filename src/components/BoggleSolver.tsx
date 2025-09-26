@@ -19,7 +19,7 @@ const BoggleSolver = () => {
   const [isEditingBoard, setIsEditingBoard] = useState<boolean>(false);
 
   // Sample found words with their paths (row, col coordinates)
-  const [foundWords] = useState<Word[]>([
+  const [foundWords, setFoundWords] = useState<Word[]>([
     {
       word: "CAT",
       path: [
@@ -70,6 +70,7 @@ const BoggleSolver = () => {
   const handleFindWords = () => {
     console.log("hi");
     const words = findWordsInBoard(board);
+    setFoundWords(words);
     console.log(`Found ${words.length} words!`)
   }
 

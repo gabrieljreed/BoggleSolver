@@ -66,6 +66,7 @@ const isValidPosition = (board: Board, row: number, col: number): boolean => {
   return row >= 0 && row < board.length && col >= 0 && col < board[0].length;
 };
 
+// Depth-first search to find words
 const dfs = (
   board: Board,
   row: number,
@@ -80,10 +81,12 @@ const dfs = (
   const newWord = currentWord + letter;
   const newPath = [...currentPath, { row, col }];
 
+  // Early termination - if prefix doesn't exist in dictionary
   if (!dictionary.hasPrefix(newWord)) {
     return;
   }
 
+  // If it's a valid word and long enough
   if (newWord.length >= MIN_WORD_LENGTH && dictionary.hasWord(newWord)) {
     if (!foundWords.has(newWord)) {
       foundWords.add(newWord);
@@ -99,14 +102,14 @@ const dfs = (
     const newRow = row + direction.row;
     const newCol = col + direction.col;
 
-    if (isValidPosition(board, newRow, newCol)) {
+    if (isValidPosition(board, newRow, newCol) && !visited[newRow][newCol]) {
       dfs(
         board,
         newRow,
         newCol,
         visited,
-        currentWord,
-        currentPath,
+        newWord,
+        newPath,
         foundWords,
         foundPaths
       );
