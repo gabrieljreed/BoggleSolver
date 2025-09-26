@@ -17,45 +17,7 @@ const BoggleSolver = () => {
   ]);
 
   const [isEditingBoard, setIsEditingBoard] = useState<boolean>(false);
-
-  // Sample found words with their paths (row, col coordinates)
-  const [foundWords, setFoundWords] = useState<Word[]>([
-    {
-      word: "CAT",
-      path: [
-        { row: 0, col: 0 },
-        { row: 0, col: 1 },
-        { row: 0, col: 2 },
-      ],
-    },
-    {
-      word: "DOG",
-      path: [
-        { row: 2, col: 1 },
-        { row: 1, col: 1 },
-        { row: 1, col: 2 },
-      ],
-    },
-    {
-      word: "CORD",
-      path: [
-        { row: 0, col: 0 },
-        { row: 1, col: 1 },
-        { row: 1, col: 0 },
-        { row: 2, col: 1 },
-      ],
-    },
-    {
-      word: "BLUE",
-      path: [
-        { row: 3, col: 0 },
-        { row: 3, col: 1 },
-        { row: 3, col: 2 },
-        { row: 3, col: 3 },
-      ],
-    },
-  ]);
-
+  const [foundWords, setFoundWords] = useState<Word[]>([]);
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
 
   const handleWordSelect = (wordObj: Word): void => {
